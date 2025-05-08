@@ -1,16 +1,11 @@
 const Sequelize = require("sequelize");
 const { Umzug, SequelizeStorage } = require("umzug");
-const { DB_PASSWORD } = require("./config");
+const { DB_PASSWORD, DB_NAME, DB_USER } = require("./config");
 
-const sequelize = new Sequelize(
-  "fullstack-part13",
-  "postgres",
-  `${DB_PASSWORD}`,
-  {
-    host: "localhost",
-    dialect: "postgres",
-  }
-);
+const sequelize = new Sequelize(`${DB_NAME}`, `${DB_USER}`, `${DB_PASSWORD}`, {
+  host: "localhost",
+  dialect: "postgres",
+});
 
 const migrationConf = {
   migrations: {
